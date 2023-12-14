@@ -1,16 +1,24 @@
 function isSameType(value1, value2) {
-  // Convert the inputs to numbers
-  value1 = Number(value1);
-  value2 = Number(value2);
+  const typeValue1 = getType(value1);
+  const typeValue2 = getType(value2);
 
-  if (Number.isNaN(value1) && Number.isNaN(value2)) {
+  if (typeValue1 === "number" && Number.isNaN(value1) &&
+      typeValue2 === "number" && Number.isNaN(value2)) {
     return true;
   }
 
-  return typeof value1 === typeof value2;
+  return typeValue1 === typeValue2;
 }
 
-// do not change the code below.
+function getType(value) {
+  if (Number.isNaN(value)) {
+    return "number";
+  }
+  return typeof value;
+}
+
+// Do not change the code below
 let value1 = prompt("Enter Start of the Range.");
 let value2 = prompt("Enter End Of the Range.");
 alert(isSameType(value1, value2));
+
